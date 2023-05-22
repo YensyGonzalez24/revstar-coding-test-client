@@ -7,8 +7,16 @@ import {
   ReactElement,
 } from "react";
 
-type useUserTypes = {
-  userId: string;
+type userType = {
+  id: string | undefined;
+  email: string | undefined;
+  name: string | undefined;
+  role: string | undefined;
+};
+
+type userContextType = {
+  user: userType;
+  setUser: Dispatch<SetStateAction<userType>>;
 };
 
 type guardedRouteTypes = {
@@ -23,19 +31,6 @@ type routeType = {
   isGuarded: boolean;
   children?: routeType[];
   guardedRedirectUrl?: string;
-};
-
-type headerType = {
-  authorization?: string;
-};
-
-type paginationDataType = {
-  page?: number;
-  pageSize?: number;
-};
-
-type propsBasicLayoutType = {
-  children?: ReactNode;
 };
 
 type useModalProptypes = {
@@ -58,6 +53,12 @@ type buttonProptypes = {
   variant?: string;
 };
 
+type inputProptypes = {
+  id: string;
+  name: string;
+  placeholder: string;
+};
+
 type emptyListProptypes = {
   message: string;
   renderButton: boolean;
@@ -65,34 +66,52 @@ type emptyListProptypes = {
   buttonActionHandler: MouseEventHandler<HTMLDivElement>;
 };
 
+type companyType = {
+  NIT: string;
+  name: string;
+  address: string;
+  telephone: string;
+};
+
 type companyListProptypes = {
-  data?: Object[];
+  companies: companyType[];
   createCompanyHandler: MouseEventHandler<HTMLDivElement>;
 };
 
-type inputProptypes = {
+type companyListCardProptypes = {
+  company: companyType;
+};
+
+type productType = {
   id: string;
   name: string;
-  placeholder: string;
+  price: string;
 };
 
 type productListProptypes = {
+  products: any[];
   createProductHandler: Function;
   exportProductPDFHandler: Function;
 };
 
+type productListCardProptypes = {
+  product: productType;
+};
+
 export type {
-  useUserTypes,
+  userType,
+  userContextType,
   guardedRouteTypes,
   routeType,
-  headerType,
-  paginationDataType,
-  propsBasicLayoutType,
   modalContextType,
   buttonProptypes,
   emptyListProptypes,
-  companyListProptypes,
   useModalProptypes,
   inputProptypes,
+  companyType,
+  companyListProptypes,
+  companyListCardProptypes,
+  productType,
   productListProptypes,
+  productListCardProptypes,
 };

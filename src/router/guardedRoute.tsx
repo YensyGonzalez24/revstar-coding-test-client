@@ -4,14 +4,14 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { guardedRouteTypes } from 'utils/proptypes';
 
 const GuardedRoute = ({ path, isNestedRoute = false, nestedRouteRedirectUrl }: guardedRouteTypes) => {
-  const { userPermissionProfile } = useUser({ userId: '' });
+  const { userPermissionProfile } = useUser();
 
   const userIsAuthorized = userPermissionProfile?.permittedRoutes.find(
     route => route === path,
   );
 
   const redirectUrl = isNestedRoute ? nestedRouteRedirectUrl : userPermissionProfile?.defaultRedirectUrl
-
+    
   return userIsAuthorized ? (
     <Outlet />
   ) : (

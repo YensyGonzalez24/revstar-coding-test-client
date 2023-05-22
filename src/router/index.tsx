@@ -3,8 +3,16 @@ import routes from 'router/routes';
 import GuardedRoute from 'router/guardedRoute';
 // eslint-disable-next-line
 import { routeType } from 'utils/proptypes';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Router = () => {
+
+  const {isLoading} = useAuth0();
+
+  if(isLoading){
+    return <div>Loading auth</div>
+  }
+
   return (
     <BrowserRouter>
       <Routes>
