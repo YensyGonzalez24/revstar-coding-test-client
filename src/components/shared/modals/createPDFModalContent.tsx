@@ -1,6 +1,4 @@
 import { Button } from "components/primitive";
-import Input from "components/primitive/input";
-import { Formik } from "formik";
 import useModal from "hooks/useModal";
 import { componentLabels } from "utils/constants";
 

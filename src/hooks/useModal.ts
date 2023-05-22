@@ -1,6 +1,5 @@
 import { ModalContext } from "hocs/modalContext";
-import { useContext, useEffect } from "react";
-import { useModalProptypes } from "utils/proptypes";
+import { useContext } from "react";
 
 const useModal = () => {
   const { isOpen, setModalIsOpen, setModalContent, setModalTitle } =
@@ -11,10 +10,10 @@ const useModal = () => {
   };
 
   return {
+    isOpen,
     toggleModal,
     setModalContent,
     setModalTitle,
-    isOpen,
   };
 };
 

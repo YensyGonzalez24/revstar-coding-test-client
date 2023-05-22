@@ -1,12 +1,16 @@
 import { Button } from "components/primitive";
 import ProductListCard from "./productListCard";
-import { productListProptypes } from "utils/proptypes";
+import { productListProptypes, productType } from "utils/proptypes";
+import useUser from "hooks/useUser";
 
-const ProductList = ({createProductHandler, exportProductPDFHandler}:productListProptypes) =>{
+const ProductList = ({products, createProductHandler, exportProductPDFHandler}:productListProptypes) =>{
+    const {userPermissionProfile} = useUser();
+
     return (
         <div className="h-full w-screen max-w-screen-xl px-4 flex flex-col items-end">
             <div className="flex w-96 mb-8">
-                <Button onClickHandler={createProductHandler}>Create Product</Button>
+                {userPermissionProfile?.customActions?.COMPANY_DETAIL_PAGE.allowProductCreation && 
+                                <Button onClickHandler={createProductHandler}>Create Product</Button>}
                 <span className="w-2"/>
                 <Button onClickHandler={exportProductPDFHandler}>Export PDF</Button>
             </div>
@@ -16,13 +20,11 @@ const ProductList = ({createProductHandler, exportProductPDFHandler}:productList
                     <div className="px-4 py-2 w-1/3 md:w-1/4 text-center">Price</div>
                 </div>
                 <div className="w-full flex flex-col">
-                    <ProductListCard/>
-                    <ProductListCard/>
-                    <ProductListCard/>
-                    <ProductListCard/>
-                    <ProductListCard/>
-                    <ProductListCard/>
-                    <ProductListCard/>
+                    {products.map((product: productType, key) => {
+                        return (
+                        <ProductListCard key={`product-card-key-${key}`} product={product}/>
+                        )
+                    })}
                 </div>
             </div>
             <div></div>
