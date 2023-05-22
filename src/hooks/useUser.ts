@@ -15,8 +15,6 @@ const useUser = () => {
       email: auth0User?.email,
     },
     onCompleted: (data) => {
-      console.log(data);
-
       setUser({
         id: auth0User?.sub,
         email: auth0User?.email,
@@ -25,8 +23,6 @@ const useUser = () => {
       });
     },
   });
-
-  console.log(user);
 
   useEffect(() => {
     if (!user.role && isAuthenticated) {
