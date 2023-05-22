@@ -19,12 +19,6 @@ const ProductModalContent = ({onProductCreatedHandler, companyId}:any) =>{
             setSubmitting(true);
     
             try{
-
-                console.log({
-                    companyId,
-                    name: values.name,
-                    price: values.price
-                })
     
                 await createProduct({
                     variables:{
