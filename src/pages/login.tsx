@@ -1,7 +1,11 @@
+import { useAuth0 } from "@auth0/auth0-react";
+
 const Login = () =>{
-    return <div>
-        login
-    </div>
+    const {loginWithRedirect} = useAuth0();
+
+    loginWithRedirect();
+ 
+    return <div></div>
 }
 
 export default Login;

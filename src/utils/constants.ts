@@ -8,7 +8,7 @@ const httpMethods = {
 
 const userTypes = {
   USER: "USER",
-  ADMIN_USER: "ADMIN_USER",
+  ADMIN_USER: "ADMIN",
 };
 
 const apiEndoints = {};

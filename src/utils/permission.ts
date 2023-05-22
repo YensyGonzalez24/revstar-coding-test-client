@@ -28,6 +28,8 @@ const userPerimissionProfiles = [
       },
       COMPANY_DETAIL_PAGE: {
         allowProductCreation: true,
+        allowCompanyDeletion: true,
+        allowCompanyModification: true,
       },
     },
   },
