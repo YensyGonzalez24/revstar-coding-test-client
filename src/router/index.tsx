@@ -7,14 +7,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const Router = () => {
 
-  const {isLoading, isAuthenticated} = useAuth0();
+  const {isLoading} = useAuth0();
 
   if(isLoading){
     return <div>Loading auth</div>
-  }
-
-  if(!isLoading && !isAuthenticated){
-    return window.location.replace(`${window.location.origin}/login`)
   }
 
   return (
